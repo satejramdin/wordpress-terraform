@@ -1,0 +1,25 @@
+# Exclude specific files
+.terraform.lock.hcl
+.terraform/*
+.terraform.tfstate.lock.info
+terraform.tfstate
+terraform.tfstate.backup
+# Exclude all .log files
+*.log
+*.tfstate
+*.tfstate.backup
+
+# Exclude all .tmp files
+*.tmp
+
+# Exclude all .log files in the logs directory
+logs/*.log
+
+# Exclude all .tmp files in the temp directory
+temp/*.tmp
+
+.terraform.lock.hcl
+.terraform
+
+terraform.tfstate
+terraform.tfstate.backup

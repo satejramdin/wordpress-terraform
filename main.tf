@@ -93,11 +93,13 @@ resource "aws_db_instance" "wordpress_db" {
 
 # Create EC2 instances test
 resource "aws_instance" "wordpress" {
-  count = 2
-  ami = "ami-0a2202cf4c36161a1" # Amazon Linux 2
+  count         = 2
+  ami           = "ami-0a2202cf4c36161a1"  # Amazon Linux 2
   instance_type = "t3.micro"
-  subnet_id = element(aws_subnet.public.*.id, count.index)
-  security_groups = [aws_security_group.web.name]
+  subnet_id     = element(aws_subnet.public.*.id, count.index)
+  
+  # Use vpc_security_group_ids instead of security_groups
+  vpc_security_group_ids = [aws_security_group.web.id]
 
   user_data = <<-EOF
                 #!/bin/bash
